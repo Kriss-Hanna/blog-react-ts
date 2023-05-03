@@ -1,12 +1,13 @@
 import NavBar from "./components/NavBar"
+import AppRoutes from "./routes"
 
 function App() {
 
 
   return (
     <>
-    <NavBar />
-       <div>Hello React TS</div> 
+      <NavBar />
+      <AppRoutes />
     </>
   )
 }
