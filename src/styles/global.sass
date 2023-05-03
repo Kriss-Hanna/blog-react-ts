@@ -1,5 +1,6 @@
 @import "../styles/Navbar"
 @import "../styles/Footer"
+@import "../styles/Home"
 
 body
     background-color: #DFDFDF
@@ -46,3 +47,23 @@ q:before, q:after
 table
     border-collapse: collapse
     border-spacing: 0
+
+.container
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    grid-template-rows: 0.4fr 2.2fr 0.4fr
+    gap: 0px 0px
+    grid-template-areas: "Navbar Navbar Navbar" "Body Body Body" "Footer Footer Footer"
+    height: 100vh
+
+.Navbar
+    grid-area: Navbar
+
+.Body
+    grid-area: Body
+
+.Footer
+    grid-area: Footer
+    position: fixed
+    bottom: 0
+    width: 100%

@@ -6,11 +6,21 @@ function App() {
 
 
   return (
-    <>
-      <NavBar />
-      <AppRoutes />
-      <Footer />
-    </>
+    <div className="container">
+
+      <div className="Navbar">
+        <NavBar />
+      </div>
+
+      <div className="Body">
+        <AppRoutes />
+      </div>
+
+      <div className="Footer">
+        <Footer />
+      </div>
+
+    </div>
   )
 }
 
