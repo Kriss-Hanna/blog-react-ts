@@ -1,14 +1,15 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import TextField from '@mui/material/TextField';
+import axios from "axios";
 
 interface FormData {
-  firstName: string;
-  lastName: string;
+  nameAuthor: string;
   email: string;
   message: string;
 }
 const Contact = () => {
+
   const {
     register,
     handleSubmit,
@@ -16,21 +17,18 @@ const Contact = () => {
   } = useForm<FormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     setIsSubmitting(true);
-    console.log(data); 
+    await axios.post('http://localhost:8000/contact', data);   
     setIsSubmitting(false);
   };
+
 
   return (
     <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
 
-
-      <TextField id="outlined-basic" label="Prénom" variant="outlined" {...register("firstName", { required: true })}  />
-      {errors.firstName && <span>Ce champ est requis</span>}
-
-      <TextField id="outlined-basic" label="Nom" variant="outlined" {...register("lastName", { required: true })} />
-      {errors.lastName && <span>Ce champ est requis</span>}
+      <TextField id="outlined-basic" label="Prénom" variant="outlined" {...register("nameAuthor", { required: true })}  />
+      {errors.nameAuthor && <span>Ce champ est requis</span>}
 
       <TextField id="outlined-basic" label="Email" variant="outlined"   type="email"
         {...register("email", {
@@ -55,5 +53,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
