@@ -5,7 +5,7 @@ interface LoginProps {
   onLogin: (email: string, password: string) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Register: React.FC<LoginProps> = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,6 +25,17 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   return (
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="field">
+        <label htmlFor="email">Nom d'utilisateur</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={email}
+          onChange={handleEmailChange}
+          required
+        />
+      </div>
+      <div className="field">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -36,7 +47,18 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         />
       </div>
       <div className="field">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={password}
+          onChange={handlePasswordChange}
+          required
+        />
+      </div>
+      <div className="field">
+        <label htmlFor="password">Confirmation du mot de passe</label>
         <input
           type="password"
           id="password"
@@ -49,10 +71,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       <button className="login-form__button" type="submit">
         Login
       </button>
-
-      <Link to="/register">Pas encore inscrit ?</Link>
+      <Link to="/login">Déjà inscrit ?</Link>
     </form>
   );
 };
 
-export default Login;
+export default Register;
