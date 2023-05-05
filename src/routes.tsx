@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import Post from "./pages/Post";
 
 
 const AppRoutes: React.FC = () => {
@@ -14,6 +15,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/:id" element={<Post />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
 

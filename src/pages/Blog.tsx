@@ -27,7 +27,7 @@ const Blog: React.FC<BlogProps> = () => {
   return (
     <div className="blog">
       {posts.map((post) => (
-        <CardPosts key={post.id} title={post.title} imageUrl={post.imageurl} description={post.description} />
+        <CardPosts id={post.id} title={post.title} imageUrl={post.imageurl} description={post.description} />
         ))}
     </div>
   );
