@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React,  {useEffect, useState} from "react"
+import CardPosts from '../components/CardPosts';
+import axios from "axios"
+import { Link } from "react-router-dom";
 
 interface BlogPost {
   id: number;
@@ -13,17 +15,20 @@ interface BlogProps {
 }
 
 const Blog: React.FC<BlogProps> = () => {
-  const [posts, setPosts] = useState([{}]);
+  const [posts,setPosts] = useState([{}])
 
-  useEffect(() => {
-    axios.get("http://localhost:8000/posts").then((res) => setPosts(res.data));
-  }, []);
+  useEffect(()=> {
+    axios.get("http://localhost:8000/posts")
+    .then((res) => setPosts(res.data))
+  }, [])
 
-  console.log(posts);
+  console.log(posts)
 
   return (
     <div className="blog">
-       <h3>blog</h3>
+      {posts.map((post) => (
+        <CardPosts key={post.id} title={post.title} imageUrl={post.imageurl} description={post.description} />
+        ))}
     </div>
   );
 };
