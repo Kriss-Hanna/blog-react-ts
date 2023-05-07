@@ -25,12 +25,14 @@ const Contact = () => {
 
 
   return (
+    <>
+    <h2>Me contacter</h2>
     <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
 
-      <TextField id="outlined-basic" label="Prénom" variant="outlined" {...register("nameAuthor", { required: true })}  />
+      <TextField style={{margin:"1em 0"}} id="outlined-basic" label="Prénom" variant="outlined" {...register("nameAuthor", { required: true })}  />
       {errors.nameAuthor && <span>Ce champ est requis</span>}
 
-      <TextField id="outlined-basic" label="Email" variant="outlined"   type="email"
+      <TextField style={{margin:"1em 0"}} id="outlined-basic" label="Email" variant="outlined"   type="email"
         {...register("email", {
           required: true,
           pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -42,13 +44,14 @@ const Contact = () => {
         <span>Ce champ doit être une adresse email valide</span>
       )}
 
-      <TextField multiline aria-multiline minRows={10}  label="Dites moi tout"  {...register("message", { required: true })} />
+      <TextField style={{margin:"1em 0"}} multiline aria-multiline minRows={10}  label="Dites moi tout"  {...register("message", { required: true })} />
       {errors.message && <span>Ce champ est requis</span>}
 
       <button type="submit" disabled={isSubmitting}>
         Envoyer
       </button>
     </form>
+    </>
   );
 };
 
