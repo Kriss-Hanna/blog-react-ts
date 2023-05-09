@@ -1,10 +1,11 @@
 import  { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 interface RegistrationFormData {
   username: string;
   password: string;
-/*   confirmPassword: string; */
   email: string;
 }
 
@@ -33,6 +34,18 @@ const RegisterForm = () => {
 
   const handleRegistrationSubmit = async (formData: RegistrationFormData) => {  
     await axios.post('http://localhost:8000/user', formData);
+
+    toast('Message envoyé !', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
     setUsername("")
     setEmail("")
     setPassword("")
@@ -42,6 +55,7 @@ const RegisterForm = () => {
 
   return (
     <>
+    <ToastContainer />
     <h2>Créez votre compte ici</h2>
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="field">
@@ -87,7 +101,7 @@ const RegisterForm = () => {
           onChange={handleConfirmPassword}          
           required
         />
-            {!isPasswordConfirmed && <p>Le mot de passe ne correspond pas. </p>}
+        {!isPasswordConfirmed && <p>Le mot de passe ne correspond pas. </p>}
       </div>
       <button className="login-form__button" type="submit">
         Login
