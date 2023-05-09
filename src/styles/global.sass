@@ -52,13 +52,23 @@ table
     border-collapse: collapse
     border-spacing: 0
 
+$base-color: #DFDFDF
+
 .container
     display: grid
     grid-template-columns: 1fr 1fr 1fr
-    grid-template-rows: 0.4fr 2.2fr 0.4fr
+    grid-template-rows: 0.4fr 2.4fr 0.4fr
     gap: 0px 0px
     grid-template-areas: "Navbar Navbar Navbar" "Body Body Body" "Footer Footer Footer"
     height: 100vh
+    border: blue solid 2px
+    width: auto
+
+.container
+    border: blue solid 2px
+
+    @media (max-width: 480px)
+        width: 100vw
 
 .Navbar
     grid-area: Navbar
@@ -68,6 +78,4 @@ table
 
 .Footer
     grid-area: Footer
-    position: fixed
-    bottom: 0
     width: 100%

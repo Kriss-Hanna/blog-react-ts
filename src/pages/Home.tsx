@@ -1,15 +1,44 @@
+import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react'
+import imageByIndex from '../components/ImageByIndex'
+
+import "../../embla.css"
+
+const options: EmblaOptionsType = { dragFree: true, containScroll: 'trimSnaps' }
+const SLIDE_COUNT = 16
+const slides = Array.from(Array(SLIDE_COUNT).keys())
 
 
 function Home() {
+  
+  const [emblaRef] = useEmblaCarousel(options)
+
   return (
-    <div className="home-container">
-      <img src="./img-home.jpg" alt="Homme faisant de la programmation" />
-      <div>
-        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi sed repudiandae obcaecati nisi eveniet voluptatibus tempore ullam, illum magni necessitatibus molestiae? Vitae consectetur nisi, dolorum libero sapiente dolores! Impedit fugiat, consectetur dolores, iste, officia iusto doloremque nulla placeat quis dicta vitae vel quia. Nemo laudantium facere sed aut debitis quo ea dolores eum. Repudiandae enim deleniti voluptas voluptatem, maiores quo ad laborum officiis deserunt. Delectus quaerat laboriosam, quasi nisi culpa consequatur aliquid ab cumque magnam exercitationem possimus quam ullam cupiditate quo vel cum eum officiis nostrum! Dicta quod sint earum quasi neque, velit eligendi est natus eaque veritatis iste consectetur, ipsam culpa odio odit beatae esse harum vero obcaecati distinctio quaerat aperiam hic itaque. Porro, fuga nisi adipisci vel voluptatum aspernatur enim amet, illo quae est sed? Architecto magni placeat est alias exercitationem blanditiis, hic, porro harum nam qui pariatur assumenda suscipit aperiam sint rerum? Ad consequatur illo omnis veniam aperiam saepe animi, incidunt libero atque ex, reiciendis sapiente placeat natus at illum ipsa non, minima ullam dolorum. Laboriosam debitis atque quod nihil exercitationem quisquam accusamus magnam odio deleniti tempora facilis eveniet totam eos dicta eligendi dolores quibusdam, voluptatibus harum autem nostrum sapiente iusto eaque necessitatibus quidem. Esse, voluptate officiis!</p>
+    <div className="embla">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container">
+          {slides.map((index) => (
+            <div className="embla__slide" key={index}>
+              <div className="embla__slide__number">
+                <span>{index + 1}</span>
+              </div>
+              <img
+                className="embla__slide__img"
+                src={imageByIndex(index)}
+                alt="Your alt text"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
 }
 
 export default Home
+
+
+
+
+
+
+

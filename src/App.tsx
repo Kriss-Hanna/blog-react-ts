@@ -3,8 +3,6 @@ import NavBar from "./components/NavBar"
 import AppRoutes from "./routes"
 
 function App() {
-
-
   return (
     <div className="container">
 
@@ -24,4 +22,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
