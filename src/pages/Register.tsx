@@ -1,37 +1,57 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link } from "react-router-dom";
-
-interface LoginProps {
-  onLogin: (email: string, password: string) => void;
+import axios from "axios";
+interface RegistrationFormData {
+  username: string;
+  password: string;
+/*   confirmPassword: string; */
+  email: string;
 }
 
-const Register: React.FC<LoginProps> = ({ onLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const RegisterForm = () => {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [isPasswordConfirmed, setIsPasswordConfirmed] = useState(true);
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
+  const handleConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(event.target.value);
+    setIsPasswordConfirmed(event.target.value === password);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onLogin(email, password);
+
+    if (!isPasswordConfirmed) {
+      return;
+    }
+
+    const formData: RegistrationFormData = { username, password, email };
+    handleRegistrationSubmit(formData);
   };
 
+  const handleRegistrationSubmit = async (formData: RegistrationFormData) => {  
+    await axios.post('http://localhost:8000/user', formData);
+    setUsername("")
+    setEmail("")
+    setPassword("")
+    setConfirmPassword("")
+  };
+
+
   return (
+    <>
+    <h2>Créez votre compte ici</h2>
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="field">
         <label htmlFor="email">Nom d'utilisateur</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
+          type="text"
+          id="username"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
       </div>
@@ -42,7 +62,7 @@ const Register: React.FC<LoginProps> = ({ onLogin }) => {
           id="email"
           name="email"
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail( e.target.value)}
           required
         />
       </div>
@@ -53,27 +73,30 @@ const Register: React.FC<LoginProps> = ({ onLogin }) => {
           id="password"
           name="password"
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
       <div className="field">
-        <label htmlFor="password">Confirmation du mot de passe</label>
+        <label htmlFor="confirm-password">Confirmation du mot de passe</label>
         <input
           type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
+          id="confirm-password"
+          name="confirm-password"
+          value={confirmPassword}
+          onChange={handleConfirmPassword}          
           required
         />
+            {!isPasswordConfirmed && <p>Le mot de passe ne correspond pas. </p>}
       </div>
       <button className="login-form__button" type="submit">
         Login
       </button>
       <Link to="/login">Déjà inscrit ?</Link>
     </form>
+    </>
   );
 };
 
-export default Register;
+export default RegisterForm;
+
