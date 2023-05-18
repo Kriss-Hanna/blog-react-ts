@@ -67,3 +67,14 @@
   right: 0;
   bottom: 0;
 }
+
+
+@media (max-width: 480px) {
+  .embla__slide__img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: 45vh; 
+    margin: 5em 0;
+  }
+}
