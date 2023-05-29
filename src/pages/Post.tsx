@@ -1,8 +1,24 @@
+import { useEffect } from "react"
+import { Button } from "@mui/material"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 
 function Post() {
+  const id = "f185dca6-9b30-4d90-9a4c-3adeda03b21f"
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    axios.delete(`http://localhost:8000/posts/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+    navigate("/blog")
+  }
+
+
     return (
       <div>
+        <Button variant="contained" onClick={handleClick}>Supprimer ce post</Button>
         <h3>Titre du post</h3>
         <img src="" alt="" />
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae illum dignissimos iure! Expedita, autem eos delectus facere perspiciatis necessitatibus, possimus, maxime inventore dolor nisi pariatur assumenda velit doloribus tenetur. Nisi quas minima cum commodi ut nostrum dignissimos distinctio dolorum consectetur pariatur, nobis eos perspiciatis dolores explicabo. Dignissimos, cumque voluptas impedit repellat ipsa obcaecati eligendi alias in ipsum! Corrupti ea nisi autem in a dolores nam, natus sunt eaque, qui sapiente, sequi ipsum. Asperiores voluptatum perspiciatis, aliquid voluptas quaerat placeat eos impedit nesciunt, sapiente sit temporibus nemo iure consectetur nihil, unde dolorem laboriosam nisi aut? Id voluptate exercitationem debitis deserunt quisquam harum ab molestiae unde animi voluptatum earum impedit, suscipit, nesciunt, soluta vero quae! Impedit dolore nihil eum deserunt soluta esse unde minus, temporibus velit, id dolor blanditiis assumenda perspiciatis expedita aliquid reprehenderit doloribus excepturi nam culpa adipisci. Provident expedita voluptatum magni est assumenda esse placeat voluptas explicabo ut officia odio fugiat, laboriosam quibusdam, minus ex officiis libero enim eaque optio qui, nulla delectus fuga. Minus magnam itaque nulla a fuga natus enim obcaecati possimus. Illum optio nam numquam eos? Magnam rem exercitationem expedita excepturi obcaecati earum rerum eveniet omnis? Ut, dolorem dolor dolore voluptates provident quis repudiandae, odit voluptatem recusandae accusantium minus aliquid, quisquam deserunt nulla cupiditate consectetur adipisci! Culpa consequuntur enim, corrupti doloremque sequi sit sapiente laborum commodi sunt? Voluptate ipsa ex voluptatem? Beatae libero expedita ab atque. Itaque corrupti nostrum totam dolores atque ex, repellendus magnam? Repudiandae eaque cum sit aperiam ea expedita recusandae officiis nisi perspiciatis reiciendis minima, consequatur autem ipsam cumque pariatur nostrum. Quam modi non rerum eius necessitatibus! Reprehenderit dignissimos exercitationem eum optio, assumenda reiciendis itaque magni voluptas ipsa labore. Est sapiente, odit alias animi suscipit similique, inventore quos rem labore quia esse explicabo atque harum assumenda voluptatibus minus asperiores laudantium tempore illo earum ad.</p>

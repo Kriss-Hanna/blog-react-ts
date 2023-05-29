@@ -1,7 +1,6 @@
 import React,  {useEffect, useState} from "react"
 import CardPosts from '../components/CardPosts';
 import axios from "axios"
-import { Link } from "react-router-dom";
 
 interface BlogPost {
   id: number;

@@ -23,7 +23,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <>
+        <h2>Connexion</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
       <div className="field">
         <label htmlFor="email">Email</label>
         <input
@@ -52,6 +54,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
       <Link to="/register">Pas encore inscrit ?</Link>
     </form>
+
+    </>
+   
   );
 };
 
