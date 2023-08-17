@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import TextField from '@mui/material/TextField';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
 
 interface FormData {
@@ -13,19 +14,31 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<FormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setIsSubmitting(true);
-    await axios.post('http://localhost:8000/contact', data);   
+    await axios.post('http://localhost:8000/contact', data);
+    toast('Message envoyé !', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
     setIsSubmitting(false);
+    reset();
   };
-
 
   return (
     <>
+    <ToastContainer />
     <h2>Me contacter</h2>
     <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
 
