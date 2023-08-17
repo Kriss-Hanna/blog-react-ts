@@ -10,7 +10,9 @@ function NavBar() {
             <li><NavLink to="/about">À propos de moi</NavLink></li>
             <li><NavLink to="/blog">Blog</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
-            <li><NavLink to="/login">Se connecter</NavLink></li> 
+            <li><NavLink to="/post-article">(A) Ecrire un article</NavLink></li>
+            <li><NavLink to="/message">(A) Lire message contact</NavLink></li>
+            <li><NavLink to="/admin">Se connecter</NavLink></li>  
         </ul>
     </nav>
   )
