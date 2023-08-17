@@ -21,7 +21,7 @@ const Blog: React.FC<BlogProps> = () => {
     .then((res) => setPosts(res.data))
   }, [])
 
-  console.log(posts)
+  console.log("posts",posts)
 
   return (
     <div className="blog">

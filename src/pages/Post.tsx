@@ -1,22 +1,25 @@
-import { useEffect } from "react"
 import { Button } from "@mui/material"
-import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import {useSelector, useDispatch} from "react-redux";
+import {deletePost } from "../store/postSlice";
+import { getAllPosts } from "../store/postSlice";
 
 
 function Post() {
-  const id = "f185dca6-9b30-4d90-9a4c-3adeda03b21f"
+  const dispatch = useDispatch()
+  const posts = useSelector(state => console.log(state))
   const navigate = useNavigate()
-
-  const handleClick = () => {
-    axios.delete(`http://localhost:8000/posts/${id}`)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-    navigate("/blog")
-  }
+  console.log(getAllPosts)
 
 
-    return (
+ 
+function handleClick() {
+  dispatch(deletePost())
+  navigate("/")
+}
+
+ 
+     return (
       <div>
         <Button variant="contained" onClick={handleClick}>Supprimer ce post</Button>
         <h3>Titre du post</h3>
