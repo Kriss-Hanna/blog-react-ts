@@ -39,3 +39,11 @@ export interface RegistrationFormData {
   password: string;
   email: string;
 }
+
+export interface Message {
+  id: string;
+  nameAuthor: string;
+  email: string;
+  message: string;
+  timestamp: string;
+}
