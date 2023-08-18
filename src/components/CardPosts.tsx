@@ -1,12 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-interface CardProps {
-  id: string;
-  title: string;
-  imageUrl: string;
-  description: string;
-}
+import { CardProps } from '../types';
 
 const CardPosts: React.FC<CardProps> = ({ id, title, imageUrl, description }) => {
   return (

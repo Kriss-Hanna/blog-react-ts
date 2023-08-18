@@ -1,18 +1,10 @@
-import React from 'react'
-
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
+import { FormDataArticle } from "../types";
 
-interface FormData {
-  title: string;
-  imageurl: string;
-  link: string;
-  description: string;
-  post: string;
-}
 const PostArticle = () => {
 
   const {
@@ -20,10 +12,10 @@ const PostArticle = () => {
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm<FormData>();
+  } = useForm<FormDataArticle>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit: SubmitHandler<FormDataArticle> = async (data) => {
     setIsSubmitting(true);
     await axios.post('http://localhost:8000/posts', data);
     toast('Article posté !', {
@@ -69,8 +61,5 @@ const PostArticle = () => {
     </>
   );
 };
-
-
-
 
 export default PostArticle

@@ -1,17 +1,7 @@
 import React,  {useEffect, useState} from "react"
 import CardPosts from '../components/CardPosts';
-import axios from "axios"
-
-interface BlogPost {
-  id: number;
-  title: string;
-  imageUrl: string;
-  description: string;
-}
-
-interface BlogProps {
-  posts: BlogPost[];
-}
+import axios from "axios";
+import { BlogProps } from "../types";
 
 const Blog: React.FC<BlogProps> = () => {
   const [posts,setPosts] = useState([{}])

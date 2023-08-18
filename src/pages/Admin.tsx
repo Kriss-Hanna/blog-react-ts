@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-/* import { Link } from "react-router-dom"; */
-
-interface LoginProps {
-  onLogin: (email: string, password: string) => void;
-}
+import { LoginProps } from "../types";
 
 const Admin: React.FC<LoginProps> = ({ onLogin }) => {
   const [email, setEmail] = useState("");

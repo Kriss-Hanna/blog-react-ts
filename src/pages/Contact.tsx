@@ -3,12 +3,8 @@ import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
+import { FormData } from "../types";
 
-interface FormData {
-  nameAuthor: string;
-  email: string;
-  message: string;
-}
 const Contact = () => {
 
   const {

@@ -9,9 +9,6 @@ function Post() {
   const dispatch = useDispatch()
   const posts = useSelector(state => console.log(state))
   const navigate = useNavigate()
-  console.log(getAllPosts)
-
-
  
 function handleClick() {
   dispatch(deletePost())

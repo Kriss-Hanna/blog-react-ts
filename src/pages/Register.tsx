@@ -1,13 +1,8 @@
 import  { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-
 import { Link } from "react-router-dom";
 import axios from "axios";
-interface RegistrationFormData {
-  username: string;
-  password: string;
-  email: string;
-}
+import { RegistrationFormData } from "../types";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState<string>('');
@@ -113,4 +108,3 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
-

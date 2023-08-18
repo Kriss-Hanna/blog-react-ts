@@ -1,9 +1,10 @@
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 import imageByIndex from '../components/ImageByIndex'
 
 import "../../embla.css"
 
-const options: EmblaOptionsType = { dragFree: true, containScroll: 'trimSnaps' }
+const options: EmblaOptionsType = { dragFree: true, containScroll: 'trimSnaps', loop: true }
 const SLIDE_COUNT = 16
 const slides = Array.from(Array(SLIDE_COUNT).keys())
 
@@ -11,6 +12,7 @@ const slides = Array.from(Array(SLIDE_COUNT).keys())
 function Home() {
   
   const [emblaRef] = useEmblaCarousel(options)
+  //const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()])
 
   return (
     <div className="embla">
@@ -35,10 +37,3 @@ function Home() {
 }
 
 export default Home
-
-
-
-
-
-
-

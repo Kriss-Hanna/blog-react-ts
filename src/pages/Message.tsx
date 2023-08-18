@@ -2,7 +2,10 @@ import React from 'react'
 
 const Message = () => {
   return (
-    <div>Message</div>
+    <>
+        <h2>Voici vos messages</h2>
+        
+    </>
   )
 }
 
